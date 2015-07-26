@@ -1,3 +1,14 @@
+[leader] - ,
+
+navigation
+  [leader]
+    n - nerd tree
+    f - search in files
+    ff - search files in fullscreen
+    fl - search in open buffers
+    m - most recent files
+    l - all files
+
 buffers
   [C-j]  - next buffer
   [C-n]  - next buffer
@@ -24,3 +35,7 @@ spotify
 refactoring
   [leader]
     rs - change (:symbol =>) to (symbol:)
+
+git
+  [leader]
+    gc - git commit
