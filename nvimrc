@@ -1,15 +1,16 @@
 call plug#begin('~/.vim/plugged')
+Plug 'regedarek/vim-intro'
 Plug 'regedarek/neovim-clipboard'
 Plug 'regedarek/my-vim-mappings'
 Plug 'regedarek/my-vim-autocommands'
-Plug 'regedarek/vim-intro'
-Plug 'ap/vim-buftabline'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'regedarek/fzf-configuration'
+Plug 'chriskempson/base16-vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ap/vim-buftabline'
 Plug 'qpkorr/vim-bufkill'
 Plug 'duff/vim-bufonly'
-Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
@@ -72,6 +73,7 @@ nmap <silent> <leader>f :Ag<CR>
 nmap <silent> <leader>ff :FZF!<CR>
 nmap <silent> <leader>fl :FZFLines<CR>
 nmap <silent> <leader>l :Locate /<CR>
+nmap <silent> <leader>w :FixWhitespace<CR>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
@@ -83,5 +85,5 @@ nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
 nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
 " not yet in my-vim-mappings
-nnoremap <C-j> :bnext<CR>
-nnoremap <C-k> :bprev<CR>
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprev<CR>

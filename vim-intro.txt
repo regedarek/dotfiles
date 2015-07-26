@@ -10,13 +10,13 @@ navigation
     l - all files
 
 buffers
-  [C-j]  - next buffer
   [C-n]  - next buffer
+  [C-p]  - previous buffer
   [C-w]o - zoom window
   [leader]
-    bo - buffer only
-    bn - buffer next
-    bp - buffer prev
+    bo - only buffer only
+    bn - next buffer next
+    bp - previous buffer
 
 tests
   [leader]
@@ -35,6 +35,7 @@ spotify
 refactoring
   [leader]
     rs - change (:symbol =>) to (symbol:)
+    w  - fixing whitespaces
 
 git
   [leader]
