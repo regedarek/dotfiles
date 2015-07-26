@@ -2,6 +2,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'regedarek/neovim-clipboard'
 Plug 'regedarek/my-vim-mappings'
 Plug 'regedarek/my-vim-autocommands'
+Plug 'regedarek/vim-intro'
+Plug 'ap/vim-buftabline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'regedarek/fzf-configuration'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -46,8 +48,11 @@ set hlsearch
 
 " colorscheme
 let base16colorspace=256
+colorscheme base16-railscasts
 set background=dark
-colorscheme base16-default
+hi TabLine      ctermfg=Grey   ctermbg=Black     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Black     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=Black     cterm=NONE
 
 " turn off vim-markdown folding
 let g:vim_markdown_folding_disabled=1
@@ -58,6 +63,8 @@ autocmd! BufWritePost * Neomake
 " leader mappings
 let mapleader=','
 nmap <silent> <leader>bo :Bonly<CR>
+nmap <silent> <leader>bn :bnext<CR>
+nmap <silent> <leader>bp :bprev<CR>
 nmap <silent> <leader>gc :Gcommit<CR>
 nmap <silent> <leader>n :NERDTreeToggle<CR>
 nmap <silent> <leader>m :FZFMru<CR>
@@ -69,8 +76,12 @@ nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-nmap <silent> <Leader>sn :! spotify next<CR> :redraw!<CR>
-nmap <silent> <Leader>sb :! spotify prev<CR> :redraw!<CR>
-nmap <silent> <Leader>sp :! spotify pause<CR> :redraw!<CR>
-nmap <silent> <Leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+nmap <silent> <leader>sn :! spotify next<CR> :redraw!<CR>
+nmap <silent> <leader>sb :! spotify prev<CR> :redraw!<CR>
+nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
+nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+
+" not yet in my-vim-mappings
+nnoremap <C-j> :bnext<CR>
+nnoremap <C-k> :bprev<CR>

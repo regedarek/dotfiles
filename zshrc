@@ -104,3 +104,15 @@ eval "$(hub alias -s)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fd() {
+  DIR=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf) && cd "$DIR"
+}
+vimf() {
+  FILE=$(fzf) && vim "$FILE"
+}
+fh() {
+  eval $(history | fzf +s | sed 's/ *[0-9]* *//')
+}
+kill() {
+  ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
+}

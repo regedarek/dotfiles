@@ -1,0 +1,26 @@
+buffers
+  [C-j]  - next buffer
+  [C-n]  - next buffer
+  [C-w]o - zoom window
+  [leader]
+    bo - buffer only
+    bn - buffer next
+    bp - buffer prev
+
+tests
+  [leader]
+    tn - test nearest
+    tf - test file
+    ta - test suite
+    tl - test last
+    tv - test visit
+
+spotify
+  [leader]
+    sn - next song
+    sb - previous song
+    sp - play/pause
+
+refactoring
+  [leader]
+    rs - change (:symbol =>) to (symbol:)
