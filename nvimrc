@@ -88,8 +88,8 @@ nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
 nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
 " not yet in my-vim-mappings
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprev<CR>
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
 
 " not yet in fzf-configuration
 command! FZFMru call s:fzf_wrap({
