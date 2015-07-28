@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-Plug 'regedarek/vim-intro'
 Plug 'regedarek/neovim-clipboard'
 Plug 'regedarek/my-vim-mappings'
 Plug 'regedarek/my-vim-autocommands'
@@ -21,6 +20,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'tComment'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-rooter'
