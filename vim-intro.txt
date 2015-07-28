@@ -3,18 +3,19 @@
 navigation
   [leader]
     n - nerd tree
-    f - search in files
-    ff - search files in fullscreen
-    fl - search in open buffers
+    a - search in files
+    ff - fullscreen search in all files
+    fl - search in buffers
     m - most recent files
-    l - all files
 
 buffers
   [C-n]  - next buffer
   [C-p]  - previous buffer
   [C-w]o - zoom window
   [leader]
+    bl/l  - buffer list
     bo - only buffer only
+    bd/q - kill current buffer
     bn - next buffer next
     bp - previous buffer
 
