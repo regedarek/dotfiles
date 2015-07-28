@@ -134,3 +134,6 @@ function! s:all_files()
   \        "v:val !~ 'fugitive:\\|\\.svg|NERD_tree\\|^/tmp/\\|.git/'"),
   \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
 endfunction
+
+" fixes
+nmap <bs> :<c-u>TmuxNavigateLeft<cr>
