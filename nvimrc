@@ -70,6 +70,7 @@ nmap <silent> <leader>bn :bnext<CR>
 nmap <silent> <leader>bp :bprev<CR>
 nmap <silent> <leader>bd :Bdelete<CR>
 nmap <silent> <leader>q :Bdelete<CR>
+nmap <silent> <leader>d :Bdelete<CR>
 nmap <silent> <leader>gc :Gcommit<CR>
 nmap <silent> <leader>n :NERDTreeToggle<CR>
 nmap <silent> <leader>m :FZFMru<CR>
