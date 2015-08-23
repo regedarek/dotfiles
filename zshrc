@@ -1,5 +1,5 @@
 # settings
-export EDITOR='nvim'
+export EDITOR='vim'
 export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -49,12 +49,13 @@ alias gc='git commit'
 alias gcm='git commit -m'
 alias gca='git commit -a'
 alias gcam='git commit -a -m'
-alias gch='git checkout'
+alias gco='git checkout'
 alias gd='git diff'
 alias gdw='git diff --color-words'
 alias gs='git status -sb'
 alias grhh='git reset --hard HEAD'
 alias gcmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias glog='git log --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias gl='glog --graph'
 alias gp='git push'
 alias gpo='git push origin'
@@ -77,6 +78,10 @@ alias rdm='rake db:migrate'
 alias vim=nvim
 # mappings: xing
 alias preview="ssh app-deploy@coaches-1.app.preview.fra2.xing.com"
+alias production="ssh app-deploy@coaches-1.app.fra2.xing.com"
+alias worker="ssh app-deploy@coaches-1.worker.preview.fra2.xing.com"
+alias dorne="ssh vagrant@dorne-dariusz-finster.env.xing.com"
+alias viper="ssh vagrant@viper-dariusz-finster.env.xing.com"
 alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
 
 #############################|plugins|#####################################################

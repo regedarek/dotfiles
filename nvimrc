@@ -2,12 +2,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'regedarek/neovim-clipboard'
 Plug 'regedarek/my-vim-mappings'
 Plug 'regedarek/my-vim-autocommands'
-Plug 'regedarek/fzf-configuration'
 Plug 'chriskempson/base16-vim'
+Plug 'Shougo/neomru.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'rking/ag.vim'
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-endwise'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ap/vim-buftabline'
+Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'atn34/vim-bbye'
 Plug 'duff/vim-bufonly'
 Plug 'tpope/vim-rbenv'
@@ -21,6 +25,7 @@ Plug 'tComment'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-dispatch'
+Plug 'kassio/neoterm'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-rooter'
@@ -28,6 +33,7 @@ Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
 Plug 'regedarek/vim-test-configuration'
+Plug 'szw/vim-ctrlspace'
 call plug#end()
 
 filetype plugin indent on
@@ -63,8 +69,8 @@ autocmd! BufWritePost * Neomake
 
 " leader mappings
 let mapleader=','
-nmap <silent> <leader>l :FZFBuffers<CR>
-nmap <silent> <leader>bl :FZFBuffers<CR>
+nmap <silent> <leader>l :Buffers<CR>
+nmap <silent> <leader>bl :Buffers<CR>
 nmap <silent> <leader>bo :Bonly<CR>
 nmap <silent> <leader>bn :bnext<CR>
 nmap <silent> <leader>bp :bprev<CR>
@@ -73,39 +79,49 @@ nmap <silent> <leader>q :Bdelete<CR>
 nmap <silent> <leader>d :Bdelete<CR>
 nmap <silent> <leader>gc :Gcommit<CR>
 nmap <silent> <leader>n :NERDTreeToggle<CR>
-nmap <silent> <leader>m :FZFMru<CR>
 nmap <silent> <leader>a :Ag<CR>
 nmap <silent> <leader>ff :FZF!<CR>
-nmap <silent> <leader>fl :FZFLines<CR>
+nmap <silent> <leader>fl :Lines<CR>
 nmap <silent> <leader>w :FixWhitespace<CR>
+nmap <silent> <leader>h :History<CR>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+nmap <silent> <leader>th :call neoterm#close_all()<cr>
+nmap <silent> <leader>tc :call neoterm#clear()<cr>
+nmap <silent> <leader>tk :call neoterm#kill()<cr>
 nmap <silent> <leader>sn :! spotify next<CR> :redraw!<CR>
 nmap <silent> <leader>sb :! spotify prev<CR> :redraw!<CR>
 nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
 nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
-" not yet in my-vim-mappings
-nmap <C-n> :bnext<CR>
-nmap <C-p> :bprev<CR>
-
-" not yet in fzf-configuration
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
-command! FZFMru call fzf#run({
-\ 'source':  s:all_files(),
-\ 'sink':    'edit',
-\ 'options': '-m --no-sort -x',
-\ 'down':    '40%' })
-
-function! s:all_files()
-  return extend(
-  \ filter(copy(v:oldfiles),
-  \        "v:val !~ 'fugitive:\\|\\.svg|NERD_tree_\\|^/tmp/\\|.git/'"),
-  \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
-endfunction
-
 " fixes
 nmap <bs> :<c-u>TmuxNavigateLeft<cr>
+
+" Terminal
+let g:neoterm_size = 15
+command! Troutes :T rake routes
+command! -nargs=+ Troute :T rake routes | grep <args>
+command! Tmigrate :T rake db:migrate
+command! -nargs=+ Tg :T git <args>
+
+" Yankstack
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+let g:ag_working_path_mode="r"
+
+set hidden
+set showtabline=0
+hi link CtrlSpaceNormal   PMenu
+hi link CtrlSpaceSelected PMenuSel
+hi link CtrlSpaceSearch   Search
+hi link CtrlSpaceStatus   StatusLine
+
+" Neomru
+nnoremap <silent> <Leader>m :call fzf#run({
+\   'source': 'sed "1d" $HOME/.cache/neomru/file',
+\   'sink': 'e '
+\ })<CR>
