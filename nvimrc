@@ -34,6 +34,8 @@ Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
 Plug 'regedarek/vim-test-configuration'
 Plug 'szw/vim-ctrlspace'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rbenv'
 call plug#end()
 
 filetype plugin indent on
@@ -97,22 +99,23 @@ nmap <silent> <leader>sb :! spotify prev<CR> :redraw!<CR>
 nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
 nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
-" fixes
+" tmux fix
 nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 
-" Terminal
+" terminal
 let g:neoterm_size = 15
 command! Troutes :T rake routes
 command! -nargs=+ Troute :T rake routes | grep <args>
 command! Tmigrate :T rake db:migrate
 command! -nargs=+ Tg :T git <args>
 
-" Yankstack
+" yankstack
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 let g:ag_working_path_mode="r"
 
+" ctrlspace
 set hidden
 set showtabline=0
 hi link CtrlSpaceNormal   PMenu
@@ -120,8 +123,11 @@ hi link CtrlSpaceSelected PMenuSel
 hi link CtrlSpaceSearch   Search
 hi link CtrlSpaceStatus   StatusLine
 
-" Neomru
+" neomru
 nnoremap <silent> <Leader>m :call fzf#run({
 \   'source': 'sed "1d" $HOME/.cache/neomru/file',
 \   'sink': 'e '
 \ })<CR>
+
+" disable tags completion
+set cpt-=t
