@@ -14,16 +14,16 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'atn34/vim-bbye'
 Plug 'duff/vim-bufonly'
-Plug 'tpope/vim-rbenv'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'slim-template/vim-slim'
 Plug 'troydm/zoomwintab.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tComment'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-dispatch'
 Plug 'kassio/neoterm'
 Plug 'tpope/vim-surround'
@@ -33,7 +33,6 @@ Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
 Plug 'regedarek/vim-test-configuration'
-Plug 'szw/vim-ctrlspace'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rbenv'
 call plug#end()
@@ -71,8 +70,8 @@ autocmd! BufWritePost * Neomake
 
 " leader mappings
 let mapleader=','
-nmap <silent> <leader>l :Buffers<CR>
-nmap <silent> <leader>bl :Buffers<CR>
+nmap <silent> <leader>l :BuffergatorOpen<CR>
+nmap <silent> <leader>bl :CtrlSpace<CR>
 nmap <silent> <leader>bo :Bonly<CR>
 nmap <silent> <leader>bn :bnext<CR>
 nmap <silent> <leader>bp :bprev<CR>
@@ -131,3 +130,5 @@ nnoremap <silent> <Leader>m :call fzf#run({
 
 " disable tags completion
 set cpt-=t
+let g:buffergator_suppress_keymaps = 0
+let g:buffergator_viewport_split_policy = 'B'
