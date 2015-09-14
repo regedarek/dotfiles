@@ -32,7 +32,27 @@ compinit -C
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# prompt
+# right prompt: vi mode
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+# left prompt: cmd
 parse_git_branch () {
   git branch 2> /dev/null | grep "*" | sed -e 's/* \(.*\)/(\1)/g'
 }
@@ -41,20 +61,20 @@ function precmd() {
   export PROMPT="%1~$(parse_git_branch)»%b "
 }
 
+# Use jk for ESC
+bindkey -M viins 'jk' vi-cmd-mode
+
 # mappings: git
 alias g=git
 alias gb="git branch"
-alias ga='git add .'
+alias ga='git add'
+alias gA='git add .'
 alias gc='git commit'
-alias gcm='git commit -m'
-alias gca='git commit -a'
-alias gcam='git commit -a -m'
-alias gco='git checkout'
+alias go='git checkout'
 alias gd='git diff'
-alias gdw='git diff --color-words'
 alias gs='git status -sb'
 alias grhh='git reset --hard HEAD'
-alias gcmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias gclean='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias glog='git log --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias gl='glog --graph'
 alias gp='git push'
@@ -62,6 +82,9 @@ alias gpo='git push origin'
 alias gpf='git push -f origin'
 alias gr='git pull --rebase'
 alias gri='git rebase --interactive'
+alias gg='git grep -i'
+alias stash='git stash'
+alias unstash='git stash pop'
 # mappings: system
 alias showdotfiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hidedotfiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
@@ -120,4 +143,14 @@ fh() {
 }
 kill() {
   ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
+}
+function gbs {
+  git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'
+}
+function gon {
+  gbs | nl
+  echo 'Which branch: '
+  read branch_number
+  branch_name=$(gbs | awk "NR==$branch_number" | tr -d ' ')
+  git checkout $branch_name
 }

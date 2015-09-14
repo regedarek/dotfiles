@@ -14,8 +14,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'atn34/vim-bbye'
 Plug 'duff/vim-bufonly'
-Plug 'tpope/vim-rbenv'
-Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
 Plug 'slim-template/vim-slim'
@@ -36,6 +34,7 @@ Plug 'regedarek/vim-test-configuration'
 Plug 'szw/vim-ctrlspace'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rbenv'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 filetype plugin indent on
@@ -124,10 +123,17 @@ hi link CtrlSpaceSearch   Search
 hi link CtrlSpaceStatus   StatusLine
 
 " neomru
-nnoremap <silent> <Leader>m :call fzf#run({
+nmap <silent> <Leader>m :call fzf#run({
 \   'source': 'sed "1d" $HOME/.cache/neomru/file',
 \   'sink': 'e '
 \ })<CR>
 
 " disable tags completion
 set cpt-=t
+
+" escape neoterm
+tnoremap jj <C-\><C-n>
+
+" mark line
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nmap <silent> <Leader>c :set cursorline!<CR>
