@@ -86,6 +86,7 @@ nmap <silent> <leader>ff :FZF!<CR>
 nmap <silent> <leader>fl :Lines<CR>
 nmap <silent> <leader>w :FixWhitespace<CR>
 nmap <silent> <leader>h :History<CR>
+nmap <silent> <leader>fd :e %:p:h/<CR>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>

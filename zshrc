@@ -105,6 +105,7 @@ alias production="ssh app-deploy@coaches-1.app.fra2.xing.com"
 alias worker="ssh app-deploy@coaches-1.worker.preview.fra2.xing.com"
 alias dorne="ssh vagrant@dorne-dariusz-finster.env.xing.com"
 alias viper="ssh vagrant@viper-dariusz-finster.env.xing.com"
+alias littlefinger="ssh vagrant@littlefinger-dariusz-finster.env.xing.com"
 alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
 
 #############################|plugins|#####################################################
