@@ -26,16 +26,15 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'kassio/neoterm'
+Plug 'janko-m/vim-test'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-rooter'
 Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
-Plug 'janko-m/vim-test'
-Plug 'regedarek/vim-test-configuration'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rbenv'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 call plug#end()
 
 filetype plugin indent on
@@ -72,7 +71,6 @@ autocmd! BufWritePost * Neomake
 " leader mappings
 let mapleader=','
 nmap <silent> <leader>l :BuffergatorOpen<CR>
-nmap <silent> <leader>bl :CtrlSpace<CR>
 nmap <silent> <leader>bo :Bonly<CR>
 nmap <silent> <leader>bn :bnext<CR>
 nmap <silent> <leader>bp :bprev<CR>
@@ -87,14 +85,6 @@ nmap <silent> <leader>fl :Lines<CR>
 nmap <silent> <leader>w :FixWhitespace<CR>
 nmap <silent> <leader>h :History<CR>
 nmap <silent> <leader>fd :e %:p:h/<CR>
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ta :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
-nmap <silent> <leader>th :call neoterm#close_all()<cr>
-nmap <silent> <leader>tc :call neoterm#clear()<cr>
-nmap <silent> <leader>tk :call neoterm#kill()<cr>
 nmap <silent> <leader>sn :! spotify next<CR> :redraw!<CR>
 nmap <silent> <leader>sb :! spotify prev<CR> :redraw!<CR>
 nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
@@ -116,14 +106,6 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 let g:ag_working_path_mode="r"
 
-" ctrlspace
-set hidden
-set showtabline=0
-hi link CtrlSpaceNormal   PMenu
-hi link CtrlSpaceSelected PMenuSel
-hi link CtrlSpaceSearch   Search
-hi link CtrlSpaceStatus   StatusLine
-
 " neomru
 nmap <silent> <Leader>m :call fzf#run({
 \   'source': 'sed "1d" $HOME/.cache/neomru/file',
@@ -141,5 +123,19 @@ hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=whi
 nmap <silent> <Leader>c :set cursorline!<CR>
 
 " buffergator
-let g:buffergator_suppress_keymaps = 0
+let g:buffergator_suppress_keymaps = 1
 let g:buffergator_viewport_split_policy = 'B'
+
+let test#strategy = "neoterm"
+" neoterm
+" nmap <silent> <leader>tn :call neoterm#test#run('current')<cr>
+" nmap <silent> <leader>tf :call neoterm#test#run('file')<cr>
+" nmap <silent> <leader>tl :call neoterm#test#rerun()<cr>
+" nmap <silent> <leader>th :call neoterm#close_all()<cr>
+" nmap <silent> <leader>tc :call neoterm#clear()<cr>
+" nmap <silent> <leader>tk :call neoterm#kill()<cr>
+let g:neoterm_size = '50'
+let g:neoterm_position = 'vertical'
+let g:neoterm_keep_term_open = 0
+let g:neoterm_run_tests_bg = 1
+let g:neoterm_raise_when_tests_fail = 1
