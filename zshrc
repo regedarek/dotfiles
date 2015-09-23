@@ -117,12 +117,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # docker
 eval "$(boot2docker shellinit)"
 export DOCKER_IP=$(boot2docker ip)
-export DOCKER_CERT_PATH=/Users/dariusz.finster/.boot2docker/certs/boot2docker-vm
+export DOCKER_CERT_PATH=/Users/$USERNAME/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 export DOCKER_HOST=tcp://192.168.59.103:2376
-
-# xing
-export HERMES_SANDBOX=http://test-dariusz-finster.env.xing.com:3007
 
 # colors
 BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
