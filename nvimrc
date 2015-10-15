@@ -2,10 +2,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'regedarek/neovim-clipboard'
 Plug 'regedarek/my-vim-mappings'
 Plug 'regedarek/my-vim-autocommands'
-Plug 'chriskempson/base16-vim'
 Plug 'Shougo/neomru.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'rking/ag.vim'
+Plug 'junegunn/vim-github-dashboard'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
@@ -15,6 +19,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'atn34/vim-bbye'
 Plug 'duff/vim-bufonly'
 Plug 'vim-ruby/vim-ruby'
+Plug 'kassio/neoterm'
 Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
 Plug 'kchmck/vim-coffee-script'
@@ -25,8 +30,6 @@ Plug 'tComment'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
-Plug 'kassio/neoterm'
-Plug 'janko-m/vim-test'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-rooter'
@@ -34,7 +37,6 @@ Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rbenv'
-" Plug 'SirVer/ultisnips'
 call plug#end()
 
 filetype plugin indent on
@@ -46,7 +48,7 @@ set expandtab
 set notimeout
 set tabstop=2
 set shiftwidth=2
-set showtabline=2
+set showtabline=1
 set number
 set wrap
 set backspace=2
@@ -56,8 +58,8 @@ set hlsearch
 
 " colorscheme
 let base16colorspace=256
-colorscheme base16-railscasts
-set background=dark
+colorscheme base16-3024
+set background=light
 hi TabLine      ctermfg=Grey   ctermbg=Black     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Black     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=Black     cterm=NONE
@@ -93,13 +95,6 @@ nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 " tmux fix
 nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 
-" terminal
-let g:neoterm_size = 15
-command! Troutes :T rake routes
-command! -nargs=+ Troute :T rake routes | grep <args>
-command! Tmigrate :T rake db:migrate
-command! -nargs=+ Tg :T git <args>
-
 " yankstack
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
@@ -115,9 +110,6 @@ nmap <silent> <Leader>m :call fzf#run({
 " disable tags completion
 set cpt-=t
 
-" escape neoterm
-tnoremap jj <C-\><C-n>
-
 " mark line
 hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 nmap <silent> <Leader>c :set cursorline!<CR>
@@ -126,16 +118,20 @@ nmap <silent> <Leader>c :set cursorline!<CR>
 let g:buffergator_suppress_keymaps = 1
 let g:buffergator_viewport_split_policy = 'B'
 
-let test#strategy = "neoterm"
 " neoterm
-" nmap <silent> <leader>tn :call neoterm#test#run('current')<cr>
-" nmap <silent> <leader>tf :call neoterm#test#run('file')<cr>
-" nmap <silent> <leader>tl :call neoterm#test#rerun()<cr>
-" nmap <silent> <leader>th :call neoterm#close_all()<cr>
-" nmap <silent> <leader>tc :call neoterm#clear()<cr>
-" nmap <silent> <leader>tk :call neoterm#kill()<cr>
-let g:neoterm_size = '50'
-let g:neoterm_position = 'vertical'
+nmap <silent> <leader>ta :call neoterm#test#run('all')<cr>
+nmap <silent> <leader>tf :call neoterm#test#run('file')<cr>
+nmap <silent> <leader>tn :call neoterm#test#run('current')<cr>
+nmap <silent> <leader>tl :call neoterm#test#rerun()<cr>
+nmap <silent> <leader>tk :call neoterm#kill()<cr>
 let g:neoterm_keep_term_open = 0
 let g:neoterm_run_tests_bg = 1
 let g:neoterm_raise_when_tests_fail = 1
+let g:neoterm_position = 'horizontal'
+set statusline+=%#NeotermTestRunning#%{neoterm#test#status('running')}%*
+set statusline+=%#NeotermTestSuccess#%{neoterm#test#status('success')}%*
+set statusline+=%#NeotermTestFailed#%{neoterm#test#status('failed')}%*
+tnoremap jj <C-\><C-n>
+
+" neomake
+let g:neomake_coffee_coffeelint_args = ['--reporter=csv', '-f', '.coffeelint.json']

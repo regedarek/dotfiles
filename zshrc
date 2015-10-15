@@ -1,8 +1,8 @@
 # settings
 export EDITOR='vim'
 export TERM=xterm-256color
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# export CLICOLOR=1
+# export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -97,16 +97,18 @@ alias rs='rails server'
 alias rc='rails console'
 alias r='rails'
 alias rdm='rake db:migrate'
+alias rt=rspec
 # mappings: vim & neovim
 alias vim=nvim
 # mappings: xing
 alias preview="ssh app-deploy@coaches-1.app.preview.fra2.xing.com"
 alias production="ssh app-deploy@coaches-1.app.fra2.xing.com"
 alias worker="ssh app-deploy@coaches-1.worker.preview.fra2.xing.com"
-alias dorne="ssh vagrant@dorne-dariusz-finster.env.xing.com"
+alias daario="ssh vagrant@daario-dariusz-finster.env.xing.com"
 alias viper="ssh vagrant@viper-dariusz-finster.env.xing.com"
-alias littlefinger="ssh vagrant@littlefinger-dariusz-finster.env.xing.com"
+alias jamie="ssh vagrant@jamie-dariusz-finster.env.xing.com"
 alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
+alias jcf='RAILS_ENV=test rake javascript_fixtures:create'
 
 #############################|plugins|#####################################################
 
@@ -114,37 +116,11 @@ alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
 export RBENV_ROOT="$HOME/.rbenv"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# docker
-eval "$(boot2docker shellinit)"
-export DOCKER_IP=$(boot2docker ip)
-export DOCKER_CERT_PATH=/Users/$USERNAME/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
-
 # colors
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-# hub
-eval "$(hub alias -s)"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fd() {
-  DIR=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf) && cd "$DIR"
-}
-vimf() {
-  FILE=$(fzf) && vim "$FILE"
-}
-fh() {
-  eval $(history | fzf +s | sed 's/ *[0-9]* *//')
-}
-kill() {
-  ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
-}
-function gbs {
-  git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'
-}
+# functions
 function gon {
   gbs | nl
   echo 'Which branch: '
