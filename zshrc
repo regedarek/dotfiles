@@ -1,8 +1,8 @@
 # settings
 export EDITOR='vim'
 export TERM=xterm-256color
-# export CLICOLOR=1
-# export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -115,10 +115,6 @@ alias jcf='RAILS_ENV=test rake javascript_fixtures:create'
 # rbenv
 export RBENV_ROOT="$HOME/.rbenv"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# colors
-BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.light.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # functions
 function gon {

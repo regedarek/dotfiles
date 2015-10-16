@@ -9,7 +9,6 @@ Plug 'junegunn/vim-github-dashboard'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'junegunn/seoul256.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-eunuch'
@@ -49,6 +48,7 @@ set notimeout
 set tabstop=2
 set shiftwidth=2
 set showtabline=1
+set laststatus=2
 set number
 set wrap
 set backspace=2
@@ -57,12 +57,8 @@ set textwidth=120
 set hlsearch
 
 " colorscheme
-let base16colorspace=256
-colorscheme base16-3024
-set background=light
-hi TabLine      ctermfg=Grey   ctermbg=Black     cterm=NONE
-hi TabLineFill  ctermfg=Black  ctermbg=Black     cterm=NONE
-hi TabLineSel   ctermfg=White  ctermbg=Black     cterm=NONE
+let g:seoul256_background = 252
+colorscheme seoul256
 
 " turn off vim-markdown folding
 let g:vim_markdown_folding_disabled=1
@@ -124,13 +120,27 @@ nmap <silent> <leader>tf :call neoterm#test#run('file')<cr>
 nmap <silent> <leader>tn :call neoterm#test#run('current')<cr>
 nmap <silent> <leader>tl :call neoterm#test#rerun()<cr>
 nmap <silent> <leader>tk :call neoterm#kill()<cr>
+nmap <silent> <leader>th :Tclose<cr>
 let g:neoterm_keep_term_open = 0
 let g:neoterm_run_tests_bg = 1
 let g:neoterm_raise_when_tests_fail = 1
 let g:neoterm_position = 'horizontal'
+
+hi User1 ctermbg=gray ctermfg=red   guibg=green guifg=red
+hi User2 ctermbg=red   ctermfg=blue  guibg=red   guifg=blue
+hi User3 ctermbg=blue  ctermfg=green guibg=blue  guifg=green
+set statusline=
 set statusline+=%#NeotermTestRunning#%{neoterm#test#status('running')}%*
 set statusline+=%#NeotermTestSuccess#%{neoterm#test#status('success')}%*
 set statusline+=%#NeotermTestFailed#%{neoterm#test#status('failed')}%*
+set statusline +=%1*\ %n\ %*            "buffer number
+set statusline +=%1*\ %<%F%*            "full path
+set statusline +=%1*%m%*                "modified flag
+set statusline +=%1*%=%5l%*             "current line
+set statusline +=%1*/%L%*               "total lines
+set statusline +=%1*%4v\ %*             "virtual column number
+hi StatusLine ctermbg=3 ctermfg=4
+
 tnoremap jj <C-\><C-n>
 
 " neomake
