@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'regedarek/neovim-clipboard'
-Plug 'regedarek/my-vim-mappings'
-Plug 'regedarek/my-vim-autocommands'
+Plug 'regedarek/vim-setup'
 Plug 'Shougo/neomru.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'rking/ag.vim'
@@ -84,32 +83,9 @@ nmap <silent> <leader>fl :Lines<CR>
 nmap <silent> <leader>w :FixWhitespace<CR>
 nmap <silent> <leader>h :History<CR>
 nmap <silent> <leader>fd :e %:p:h/<CR>
-nmap <silent> <leader>sn :! spotify next<CR> :redraw!<CR>
-nmap <silent> <leader>sb :! spotify prev<CR> :redraw!<CR>
-nmap <silent> <leader>sp :! spotify pause<CR> :redraw!<CR>
-nmap <silent> <leader>rs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+nmap <silent> <leader>rcs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
-" tmux fix
-nmap <bs> :<c-u>TmuxNavigateLeft<cr>
 
-" yankstack
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-let g:ag_working_path_mode="r"
-
-" neomru
-nmap <silent> <Leader>m :call fzf#run({
-\   'source': 'sed "1d" $HOME/.cache/neomru/file',
-\   'sink': 'e '
-\ })<CR>
-
-" disable tags completion
-set cpt-=t
-
-" mark line
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-nmap <silent> <Leader>c :set cursorline!<CR>
 
 " buffergator
 let g:buffergator_suppress_keymaps = 1

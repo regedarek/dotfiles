@@ -132,3 +132,5 @@ function gon {
   branch_name=$(gbs | awk "NR==$branch_number" | tr -d ' ')
   git checkout $branch_name
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
