@@ -5,6 +5,7 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PATH="/usr/local/sbin:$PATH"
 
 # history
 HISTFILE=~/.histfile
@@ -82,7 +83,7 @@ alias gpo='git push origin'
 alias gpf='git push -f origin'
 alias gr='git pull --rebase'
 alias gri='git rebase --interactive'
-alias gg='git grep -i'
+alias gg='echo "########### RESULTS ###########" && git grep -in'
 alias stash='git stash'
 alias unstash='git stash pop'
 # mappings: system
@@ -98,6 +99,7 @@ alias rc='rails console'
 alias r='rails'
 alias rdm='rake db:migrate'
 alias rt=rspec
+alias rrs='rake routes | grep'
 # mappings: vim & neovim
 alias vim=nvim
 # mappings: xing
@@ -115,6 +117,10 @@ alias jcf='RAILS_ENV=test rake javascript_fixtures:create'
 # rbenv
 export RBENV_ROOT="$HOME/.rbenv"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# fasd
+eval "$(fasd --init posix-alias zsh-hook)"
+alias c='fasd_cd -d'
 
 # functions
 function gon {
