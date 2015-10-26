@@ -1,5 +1,5 @@
 # settings
-export EDITOR='vim'
+export EDITOR='nvim'
 export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -113,6 +113,8 @@ alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
 alias jcf='RAILS_ENV=test rake javascript_fixtures:create'
 
 #############################|plugins|#####################################################
+# docker
+alias docker-setup='eval "$(docker-machine env default)" && export DOCKER_IP=$(docker-machine ip default)'
 
 # rbenv
 export RBENV_ROOT="$HOME/.rbenv"
