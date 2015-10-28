@@ -33,6 +33,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-rooter'
 Plug 'ervandew/supertab'
+Plug 'mkitt/tabline.vim'
 Plug 'benekastah/neomake'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rbenv'
@@ -47,7 +48,7 @@ set expandtab
 set notimeout
 set tabstop=2
 set shiftwidth=2
-set showtabline=1
+set showtabline=2
 set laststatus=2
 set number
 set wrap
