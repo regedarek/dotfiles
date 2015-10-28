@@ -74,9 +74,11 @@ nmap <silent> <leader>bo :Bonly<CR>
 nmap <silent> <leader>bn :bnext<CR>
 nmap <silent> <M-h> :tabprev<cr>
 nmap <silent> <M-l> :tabnext<cr>
+nmap <silent> <M-j> :bprev<cr>
+nmap <silent> <M-k> :bnext<cr>
 nmap <silent> <leader>bp :bprev<CR>
 nmap <silent> <leader>bd :Bdelete<CR>
-nmap <silent> <leader>q :Bdelete<CR>
+nmap <silent> <leader>q :q<CR>
 nmap <silent> <leader>d :Bdelete<CR>
 nmap <silent> <leader>gc :Gcommit<CR>
 nmap <silent> <leader>n :NERDTreeToggle<CR>
