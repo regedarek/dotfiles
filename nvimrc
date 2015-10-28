@@ -71,6 +71,8 @@ let mapleader=','
 nmap <silent> <leader>l :BuffergatorOpen<CR>
 nmap <silent> <leader>bo :Bonly<CR>
 nmap <silent> <leader>bn :bnext<CR>
+nmap <silent> <M-h> :tabprev<cr>
+nmap <silent> <M-l> :tabnext<cr>
 nmap <silent> <leader>bp :bprev<CR>
 nmap <silent> <leader>bd :Bdelete<CR>
 nmap <silent> <leader>q :Bdelete<CR>
@@ -85,7 +87,11 @@ nmap <silent> <leader>h :History<CR>
 nmap <silent> <leader>fd :e %:p:h/<CR>
 nmap <silent> <leader>rcs :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 
-
+" correct typos
+iabbrev initialise initialize
+iabbrev initailise initialize
+iabbrev initailize initialize
+iabbrev intialize  initialize
 
 " buffergator
 let g:buffergator_suppress_keymaps = 1
@@ -122,3 +128,11 @@ tnoremap jj <C-\><C-n>
 
 " neomake
 let g:neomake_coffee_coffeelint_args = ['--reporter=csv', '-f', '.coffeelint.json']
+
+command! -nargs=? -complete=file E tab new <args>
+command! -nargs=? -complete=file EC tab new %:p:h/<args>
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
