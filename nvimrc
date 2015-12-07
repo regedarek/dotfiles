@@ -54,7 +54,7 @@ set number
 set nowrap
 set backspace=2
 set colorcolumn=+1
-set textwidth=120
+set textwidth=0
 set hlsearch
 
 " colorscheme
