@@ -51,7 +51,7 @@ set shiftwidth=2
 set showtabline=2
 set laststatus=2
 set number
-set wrap
+set nowrap
 set backspace=2
 set colorcolumn=+1
 set textwidth=120
