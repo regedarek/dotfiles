@@ -1,12 +1,14 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 call plug#begin('~/.vim/plugged')
 Plug 'regedarek/neovim-clipboard'
 Plug 'regedarek/vim-setup'
 Plug 'Shougo/neomru.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'rking/ag.vim'
-Plug 'junegunn/vim-github-dashboard'
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }

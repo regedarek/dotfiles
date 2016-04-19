@@ -94,12 +94,12 @@ alias ls='ls -Fa'
 # mappings: rails
 alias be='bundle exec'
 alias bi='bundle install'
-alias rs='rails server'
-alias rc='rails console'
-alias r='rails'
-alias rdm='rake db:migrate'
-alias rt=rspec
-alias rrs='rake routes | grep'
+alias rs='bundle exec rails server'
+alias rc='bundle exec rails console'
+alias r='bundle exec rails'
+alias rdm='bundle exec rake db:migrate'
+alias rt='bundle exec rspec'
+alias rrs='bundle exec rake routes | grep'
 # mappings: vim & neovim
 alias vim=nvim
 # mappings: xing
@@ -110,19 +110,20 @@ alias dorne="ssh vagrant@dorne-dariusz-finster.env.xing.com"
 alias viper="ssh vagrant@viper-dariusz-finster.env.xing.com"
 alias jamie="ssh vagrant@jamie-dariusz-finster.env.xing.com"
 alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
-alias jcf='RAILS_ENV=test rake javascript_fixtures:create'
+alias jcf='RAILS_ENV=test bundle exec rake javascript_fixtures:create'
 
 #############################|plugins|#####################################################
 # docker
 alias docker-setup='eval "$(docker-machine env default)" && export DOCKER_IP=$(docker-machine ip default)'
 
-# rbenv
-export RBENV_ROOT="$HOME/.rbenv"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # fasd
 eval "$(fasd --init posix-alias zsh-hook)"
 alias c='fasd_cd -d'
+alias v='f -e nvim' # quick opening files with vim
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # functions
 function gon {
