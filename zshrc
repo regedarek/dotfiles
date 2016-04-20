@@ -101,7 +101,7 @@ alias rdm='bundle exec rake db:migrate'
 alias rt='bundle exec rspec'
 alias rrs='bundle exec rake routes | grep'
 # mappings: vim & neovim
-alias vim=nvim
+alias vim='nvim -u ~/code/dotfiles/nvimrc.min'
 # mappings: xing
 alias preview="ssh app-deploy@coaches-1.app.preview.fra2.xing.com"
 alias production="ssh app-deploy@coaches-1.app.fra2.xing.com"
@@ -119,7 +119,7 @@ alias docker-setup='eval "$(docker-machine env default)" && export DOCKER_IP=$(d
 # fasd
 eval "$(fasd --init posix-alias zsh-hook)"
 alias c='fasd_cd -d'
-alias v='f -e nvim' # quick opening files with vim
+alias v="f -e 'nvim -u ~/code/dotfiles/nvimrc.min'" # quick opening files with vim
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
