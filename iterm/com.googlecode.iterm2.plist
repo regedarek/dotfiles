@@ -1212,11 +1212,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1239 32 445 82 0 0 1920 1057 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>300 389 924 485 0 0 1920 1080 </string>
+	<string>155 271 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame com.apple.typography_panel_Monaco</key>
 	<string>560 727 260 56 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>254 124 1394 862 0 0 1920 1057 </string>
+	<string>38 15 1417 862 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>435 180 890 876 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2017,7 +2017,7 @@
 	<key>SUEnableAutomaticChecks</key>
 	<false/>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/final.xml</string>
+	<string>https://iterm2.com/appcasts/final.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
@@ -2061,12 +2061,12 @@
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
-	<string>/-+\~_.</string>
+	<string>żvvbcv                                          90-pģýņ90=]\</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.1</string>
+	<string>2.1.4</string>
 </dict>
 </plist>
