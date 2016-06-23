@@ -135,3 +135,4 @@ function gon {
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias integration_test_sand="REST_BASE_URL=http://dorne-dariusz-finster.env.xing.com:3007/rest POLTERGEIST=true rt integration_tests/buying_procoach_spec.rb"
