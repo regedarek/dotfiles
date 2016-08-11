@@ -86,6 +86,8 @@ alias gri='git rebase --interactive'
 alias gg='echo "########### RESULTS ###########" && git grep -in'
 alias stash='git stash'
 alias unstash='git stash pop'
+alias gt='git for-each-ref --sort="-*authordate" --format="%(tag) - %(taggerdate:short)%0a%(contents)" refs/tags | less'
+alias grl='git log --oneline --grep=Merge --since "2 weeks ago"'
 # mappings: system
 alias showdotfiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hidedotfiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
@@ -109,15 +111,21 @@ alias viper="ssh vagrant@viper-dariusz-finster.env.xing.com"
 alias jamie="ssh vagrant@jamie-dariusz-finster.env.xing.com"
 alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
 alias jcf='RAILS_ENV=test bundle exec rake javascript_fixtures:create'
+alias integration_test_sand="REST_BASE_URL=http://dorne-dariusz-finster.env.xing.com:3007/rest POLTERGEIST=true rt integration_tests/buying_procoach_spec.rb"
 
 #############################|plugins|#####################################################
 # docker
 alias docker-setup='eval "$(docker-machine env default)" && export DOCKER_IP=$(docker-machine ip default)'
 
 # fasd
-eval "$(fasd --init posix-alias zsh-hook)"
-alias c='fasd_cd -d'
-alias v="f -e vim" # quick opening files with vim
+#eval "$(fasd --init posix-alias zsh-wcomp zsh-hook zsh-ccomp)"
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias zsh-wcomp zsh-hook zsh-ccomp >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+alias v='f -t -e vim -b viminfo'
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -135,4 +143,3 @@ function gon {
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias integration_test_sand="REST_BASE_URL=http://dorne-dariusz-finster.env.xing.com:3007/rest POLTERGEIST=true rt integration_tests/buying_procoach_spec.rb"
