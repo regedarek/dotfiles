@@ -61,10 +61,7 @@ parse_git_branch () {
 function precmd() {
   export PROMPT="%1~$(parse_git_branch)»%b "
 }
-
-# Use jk for ESC
-bindkey -M viins 'jk' vi-cmd-mode
-
+k
 # mappings: git
 alias g=git
 alias gb="git branch"
@@ -100,31 +97,10 @@ alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias r='bundle exec rails'
 alias rdm='bundle exec rake db:migrate'
-alias rt='bundle exec rspec'
-alias rrs='bundle exec rake routes | grep'
-# mappings: xing
-alias preview="ssh app-deploy@coaches-1.app.preview.fra2.xing.com"
-alias production="ssh app-deploy@coaches-1.app.fra2.xing.com"
-alias worker="ssh app-deploy@coaches-1.worker.preview.fra2.xing.com"
-alias dorne="ssh vagrant@dorne-dariusz-finster.env.xing.com"
-alias viper="ssh vagrant@viper-dariusz-finster.env.xing.com"
-alias jamie="ssh vagrant@jamie-dariusz-finster.env.xing.com"
-alias ccop="coffeelint -f .coffeelint.json ./**/*.coffee"
-alias jcf='RAILS_ENV=test bundle exec rake javascript_fixtures:create'
-alias integration_test_sand="REST_BASE_URL=http://dorne-dariusz-finster.env.xing.com:3007/rest POLTERGEIST=true rt integration_tests/buying_procoach_spec.rb"
 
 #############################|plugins|#####################################################
-# docker
-alias docker-setup='eval "$(docker-machine env default)" && export DOCKER_IP=$(docker-machine ip default)'
-
 # fasd
-#eval "$(fasd --init posix-alias zsh-wcomp zsh-hook zsh-ccomp)"
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias zsh-wcomp zsh-hook zsh-ccomp >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
+eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias posix-hook)"
 alias v='f -t -e vim -b viminfo'
 
 # rbenv
