@@ -1,11 +1,14 @@
 # settings
-export EDITOR='vim'
-export TERM=xterm-256color
+export EDITOR='nvim'
+export TERM=tmux-256color
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="/usr/local/sbin:$PATH"
+export GMAIL_PASSWORD=wvbaxuvxkqxlbzrx
+export DOTPAY_PASSWORD=ochotnic4
+export GITHUB_USERNAME="regedarek"
 
 # history
 HISTFILE=~/.histfile
@@ -61,7 +64,9 @@ parse_git_branch () {
 function precmd() {
   export PROMPT="%1~$(parse_git_branch)»%b "
 }
-k
+# Use jk for ESC
+bindkey -M viins 'jk' vi-cmd-mode
+
 # mappings: git
 alias g=git
 alias gb="git branch"
@@ -86,36 +91,47 @@ alias unstash='git stash pop'
 alias gt='git for-each-ref --sort="-*authordate" --format="%(tag) - %(taggerdate:short)%0a%(contents)" refs/tags | less'
 alias grl='git log --oneline --grep=Merge --since "2 weeks ago"'
 # mappings: system
+alias mux=tmuxinator
 alias showdotfiles='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias hidedotfiles='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias e='exit'
 alias ls='ls -Fa'
+alias vim=nvim
 # mappings: rails
 alias be='bundle exec'
 alias bi='bundle install'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias r='bundle exec rails'
+alias t=tmux
+alias v=vim
+alias s=ssh
 alias rdm='bundle exec rake db:migrate'
+alias :e=vim
+alias :qa=exit
+alias :sp='test -n "$TMUX" && tmux split-window'
+alias :vs='test -n "$TMUX" && tmux split-window -h'
+alias :wq=exit
 
 #############################|plugins|#####################################################
-# fasd
-eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias posix-hook)"
-alias v='f -t -e vim -b viminfo'
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# functions
-function gon {
-  gbs | nl
-  echo 'Which branch: '
-  read branch_number
-  branch_name=$(gbs | awk "NR==$branch_number" | tr -d ' ')
-  git checkout $branch_name
-}
+source "$HOME/.config/nvim/pack/minpac/start/gruvbox/gruvbox_256palette.sh"
 
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+function fg-bg() {
+  if [[ $#BUFFER -eq 0 ]]; then
+    fg
+  else
+    zle push-input
+  fi
+}
+zle -N fg-bg
+bindkey '^Z' fg-bg
+
+source $HOME/.zsh/colors
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+alias ctags="`brew --prefix`/bin/ctags"
