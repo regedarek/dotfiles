@@ -9,6 +9,7 @@ Ctrl-B + I
 ```
 ln -s /Users/rege/Library/Mobile\ Documents/com~apple~CloudDocs/Configuration/.zprofile  ~/.zprofile
 ln -s /Users/rege/Library/Mobile\ Documents/com~apple~CloudDocs/Configuration/.zshrc  ~/.zshrc
+ln -s /Users/rege/Library/Mobile\ Documents/com\~apple\~CloudDocs/Configuration/zed/settings.json ~/.config/zed/settings.json
 ```
 
 ```
