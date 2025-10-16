@@ -35,3 +35,17 @@ index e9757636809c654030286c499d3288cfd6329c03..500ca82af2dae923b6e0477e5e43ebec
 [2025-10-16 12:25:19] ---
 [2025-10-16 13:12:30] Starting chezmoi bidirectional sync...
 [2025-10-16 13:12:30] Local changes detected, committing...
+[main 00e518f] Auto-sync: 2025-10-16 13:12:30
+ 4 files changed, 38 insertions(+)
+ create mode 100644 launchagent.err
+ create mode 100644 launchagent.log
+ create mode 100644 sync.log
+[2025-10-16 13:12:30] Changes committed successfully
+To github.com:regedarek/dotfiles.git
+   15de5bc..00e518f  main -> main
+[2025-10-16 13:12:32] Changes pushed to remote successfully
+[2025-10-16 13:12:32] Pulling from remote and applying changes...
+Already up to date.
+[?25l[?2004h.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb has changed since chezmoi last wrote it? diff/overwrite/all-overwrite/skip/quit[2K[?2004l[?25h[?1002l[?1003l[?1006lchezmoi: .config/zed/prompts/prompts-library-db.0.mdb/lock.mdb: program was killed: error reading input: read /dev/tty: input/output error
+[2025-10-16 13:19:06] Starting chezmoi bidirectional sync...
+[2025-10-16 13:19:06] Local changes detected, committing...
