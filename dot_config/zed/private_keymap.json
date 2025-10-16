@@ -15,7 +15,7 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space s": "pane::DeploySearch",
-      "space h": "file_finder::Toggle",
+      "space h": "tab_switcher::Toggle",
       "space t": "file_finder::Toggle",
       "space w": "workspace::Save",
       "space space": "editor::OpenExcerpts",
@@ -24,8 +24,16 @@
     }
   },
   {
-    "context": "vim_mode == normal && !Editor",
+    "context": "!Editor && vim_mode == normal",
     "bindings": {
+      "space h": "tab_switcher::Toggle",
+      "space t": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "EmptyPane",
+    "bindings": {
+      "space h": "tab_switcher::Toggle",
       "space t": "file_finder::Toggle"
     }
   },
