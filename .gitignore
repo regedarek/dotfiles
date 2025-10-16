@@ -1,3 +1,10 @@
 .DS_Store
 .ssh
 .config
+
+# Chezmoi sync logs
+sync.log
+launchagent.log
+launchagent.err
+*.log
+*.err
