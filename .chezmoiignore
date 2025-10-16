@@ -1,5 +1,7 @@
+# Zed database files (change frequently)
+.config/zed/prompts/prompts-library-db.0.mdb/
+
 # Zed temporary files
-.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb
 .config/zed/settings.json.tmp
 .config/zed/.DS_Store
 
@@ -13,3 +15,6 @@ tags
 
 # All temporary files
 *.tmp
+
+# macOS metadata
+.DS_Store
