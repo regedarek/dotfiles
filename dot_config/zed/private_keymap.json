@@ -1,15 +1,33 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
   {
-    "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
+      "ctrl-a": "workspace::ToggleRightDock",
+      "ctrl-p": "project_panel::ToggleFocus",
+      "ctrl-g": "git_panel::ToggleFocus",
+      "ctrl-t": "terminal_panel::ToggleFocus"
     }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "ctrl-p": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "ctrl-g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-t": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {}
   },
   {
     "context": "Editor && vim_mode == normal",
@@ -19,6 +37,8 @@
       "space t": "file_finder::Toggle",
       "space w": "workspace::Save",
       "space space": "editor::OpenExcerpts",
+      "g d": ["workspace::SendKeystrokes", "*"],
+      "*": "vim::PushFindForward",
       "n": "search::SelectNextMatch",
       "shift-n": "search::SelectPreviousMatch"
     }
@@ -43,7 +63,6 @@
       "n": "search::SelectNextMatch",
       "shift-n": "search::SelectPreviousMatch",
       "ctrl-n": "search::SelectNextMatch",
-      "ctrl-p": "search::SelectPreviousMatch",
       "tab": "project_search::ToggleFocus"
     }
   }
