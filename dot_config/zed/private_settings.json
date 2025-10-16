@@ -1,4 +1,30 @@
 {
+  "collaboration_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": true
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "project_panel": {
+    "button": true
+  },
+  "status_bar": {
+    "active_language_button": false,
+    "cursor_position_button": true
+  },
+  "diagnostics": {
+    "button": true
+  },
+  "debugger": {
+    "button": false
+  },
+  "ensure_final_newline_on_save": false,
+  "format_on_save": "off",
+  "base_keymap": "SublimeText",
+  "confirm_quit": true,
   "agent": {
     "default_model": {
       "provider": "copilot_chat",

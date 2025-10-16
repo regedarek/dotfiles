@@ -17,6 +17,7 @@
       "space s": "pane::DeploySearch",
       "space h": "file_finder::Toggle",
       "space t": "file_finder::Toggle",
+      "space w": "workspace::Save",
       "space space": "editor::OpenExcerpts",
       "n": "search::SelectNextMatch",
       "shift-n": "search::SelectPreviousMatch"
