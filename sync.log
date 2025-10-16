@@ -30,3 +30,16 @@ From github.com:regedarek/dotfiles
 [2025-10-16 14:05:12] ---
 [2025-10-16 14:05:26] Starting chezmoi bidirectional sync...
 [2025-10-16 14:05:26] Local changes detected, committing...
+To github.com:regedarek/dotfiles.git
+   96f9969..824aa53  main -> main
+[main 824aa53] Auto-sync: 2025-10-16 14:05:26
+ 1 file changed, 32 insertions(+)
+[2025-10-16 14:05:28] Changes committed successfully
+Everything up-to-date
+[2025-10-16 14:05:30] Changes pushed to remote successfully
+[2025-10-16 14:05:30] Pulling from remote and applying changes...
+Already up to date.
+[2025-10-16 14:05:32] Chezmoi sync completed successfully
+[2025-10-16 14:05:32] ---
+[2025-10-16 14:06:00] Starting chezmoi bidirectional sync...
+[2025-10-16 14:06:00] Local changes detected, committing...
