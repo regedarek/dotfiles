@@ -9,51 +9,33 @@
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
-      // "j k": "vim::SwitchToNormalMode"
     }
   },
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      // Space + s: Search for word under cursor with ripgrep (fast!)
       "space s": "pane::DeploySearch",
-      // Space + h: Recent files (file finder shows recent files on top)
       "space h": "file_finder::Toggle",
-      // Space + t: Fuzzy file search (all project files)
       "space t": "file_finder::Toggle",
-      // Ctrl + n/p: Navigate search results from anywhere (Vim style!)
-      "ctrl-n": "search::SelectNextMatch",
-      "ctrl-p": "search::SelectPrevMatch"
-    }
-  },
-  {
-    "context": "ProjectSearchView",
-    "bindings": {
-      // Navigate search results with n/N (vim-style) when in search view
+      "space space": "editor::OpenExcerpts",
       "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPrevMatch",
-      "ctrl-n": "search::SelectNextMatch",
-      "ctrl-p": "search::SelectPrevMatch",
-      "tab": "search::ToggleFocus"
+      "shift-n": "search::SelectPreviousMatch"
     }
   },
   {
-    "context": "ProjectSearchBar",
+    "context": "vim_mode == normal && !Editor",
     "bindings": {
-      // n/N works immediately in search bar
+      "space t": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "ProjectSearch && vim_mode == normal",
+    "bindings": {
       "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPrevMatch",
+      "shift-n": "search::SelectPreviousMatch",
       "ctrl-n": "search::SelectNextMatch",
-      "ctrl-p": "search::SelectPrevMatch",
-      "tab": "search::ToggleFocus"
-    }
-  },
-  {
-    "context": "Pane",
-    "bindings": {
-      // Ctrl+n/p works everywhere as fallback
-      "ctrl-n": "search::SelectNextMatch",
-      "ctrl-p": "search::SelectPrevMatch"
+      "ctrl-p": "search::SelectPreviousMatch",
+      "tab": "project_search::ToggleFocus"
     }
   }
 ]
