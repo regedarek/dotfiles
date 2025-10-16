@@ -49,3 +49,16 @@ Already up to date.
 [?25l[?2004h.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb has changed since chezmoi last wrote it? diff/overwrite/all-overwrite/skip/quit[2K[?2004l[?25h[?1002l[?1003l[?1006lchezmoi: .config/zed/prompts/prompts-library-db.0.mdb/lock.mdb: program was killed: error reading input: read /dev/tty: input/output error
 [2025-10-16 13:19:06] Starting chezmoi bidirectional sync...
 [2025-10-16 13:19:06] Local changes detected, committing...
+[main 4225216] Auto-sync: 2025-10-16 13:19:06
+ 1 file changed, 14 insertions(+)
+[2025-10-16 13:19:06] Changes committed successfully
+To github.com:regedarek/dotfiles.git
+   00e518f..4225216  main -> main
+[2025-10-16 13:19:08] Changes pushed to remote successfully
+[2025-10-16 13:19:08] Pulling from remote and applying changes...
+Already up to date.
+.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb has changed since chezmoi last wrote it (diff/overwrite/all-overwrite/skip/quit)? chezmoi: .config/zed/prompts/prompts-library-db.0.mdb/lock.mdb: EOF
+[2025-10-16 13:19:10] ERROR: Chezmoi sync failed with exit code 1
+[2025-10-16 13:19:10] ---
+[2025-10-16 13:20:01] Starting chezmoi bidirectional sync...
+[2025-10-16 13:20:02] Local changes detected, committing...
