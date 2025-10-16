@@ -1,0 +1,9 @@
+# Zed temporary files
+.config/zed/prompts/prompts-library-db.0.mdb/lock.mdb
+.config/zed/settings.json.tmp
+.config/zed/.DS_Store
+
+# Chezmoi logs
+launchagent.log
+launchagent.err
+sync.log
