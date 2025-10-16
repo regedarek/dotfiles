@@ -1,0 +1,59 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // "j k": "vim::SwitchToNormalMode"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // Space + s: Search for word under cursor with ripgrep (fast!)
+      "space s": "pane::DeploySearch",
+      // Space + h: Recent files (file finder shows recent files on top)
+      "space h": "file_finder::Toggle",
+      // Space + t: Fuzzy file search (all project files)
+      "space t": "file_finder::Toggle",
+      // Ctrl + n/p: Navigate search results from anywhere (Vim style!)
+      "ctrl-n": "search::SelectNextMatch",
+      "ctrl-p": "search::SelectPrevMatch"
+    }
+  },
+  {
+    "context": "ProjectSearchView",
+    "bindings": {
+      // Navigate search results with n/N (vim-style) when in search view
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPrevMatch",
+      "ctrl-n": "search::SelectNextMatch",
+      "ctrl-p": "search::SelectPrevMatch",
+      "tab": "search::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectSearchBar",
+    "bindings": {
+      // n/N works immediately in search bar
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPrevMatch",
+      "ctrl-n": "search::SelectNextMatch",
+      "ctrl-p": "search::SelectPrevMatch",
+      "tab": "search::ToggleFocus"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      // Ctrl+n/p works everywhere as fallback
+      "ctrl-n": "search::SelectNextMatch",
+      "ctrl-p": "search::SelectPrevMatch"
+    }
+  }
+]
