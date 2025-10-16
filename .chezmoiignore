@@ -7,3 +7,9 @@
 launchagent.log
 launchagent.err
 sync.log
+
+# Tags files
+tags
+
+# All temporary files
+*.tmp
