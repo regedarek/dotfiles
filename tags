@@ -55,6 +55,7 @@ g:indentLine_bufNameExclude	vim/after/plugin/indentLine.vim	/^let g:indentLine_b
 g:indentLine_color_gui	vim/after/plugin/indentLine.vim	/^let g:indentLine_color_gui = '#4d4f4e'$/;"	v
 g:indentLine_fileTypeExclude	vim/after/plugin/indentLine.vim	/^let g:indentLine_fileTypeExclude = ['help']$/;"	v
 g:rspec_command	vim/after/plugin/vim-rspec.vim	/^let g:rspec_command = 'Run("bundle exec rspec {spec}\\n")'$/;"	v
+log	private_dot_local/bin/executable_chezmoi-sync.sh	/^log() {$/;"	f
 mappings#leader#cycle_numbering	vim/autoload/mappings/leader.vim	/^function! mappings#leader#cycle_numbering() abort$/;"	f
 mappings#leader#zap	vim/autoload/mappings/leader.vim	/^function! mappings#leader#zap() abort$/;"	f
 q:	vim/plugin/mappings/normal.vim	/^nnoremap q: <nop>$/;"	m
