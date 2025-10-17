@@ -33,17 +33,68 @@ chezmoi status  # See modified files
 cd $(chezmoi source-path) && git diff  # Review changes
 ```
 
-### macOS Launcher Setup
+### macOS Launch Agent (Auto-sync)
 
-Set up Zed as the default editor for chezmoi:
+Automatically sync dotfiles with chezmoi every hour using a Launch Agent.
+
+#### Create the sync script
+
+`~/bin/chezmoi-auto-sync.sh`:
+```bash
+#!/bin/bash
+# Auto-sync dotfiles with chezmoi
+
+# Pull latest changes from remote
+cd $(chezmoi source-path)
+git pull origin main
+
+# Apply changes
+chezmoi apply
+
+# Log the sync
+echo "$(date): Chezmoi auto-sync completed" >> ~/Library/Logs/chezmoi-sync.log
+```
+
+Make executable: `chmod +x ~/bin/chezmoi-auto-sync.sh`
+
+#### Create Launch Agent
+
+`~/Library/LaunchAgents/com.user.chezmoi.plist`:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.user.chezmoi</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>~/bin/chezmoi-auto-sync.sh</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+```
+
+#### Load the Launch Agent
 
 ```bash
-# Add to your shell config (~/.zshrc or ~/.bashrc)
-export EDITOR="zed --wait"
+# Load and start
+launchctl load ~/Library/LaunchAgents/com.user.chezmoi.plist
 
-# Or set chezmoi config
-chezmoi edit-config
-# Add: edit.command = "zed"
+# Unload (to stop)
+launchctl unload ~/Library/LaunchAgents/com.user.chezmoi.plist
+
+# Check status
+launchctl list | grep chezmoi
+
+# View sync log
+tail -f ~/Library/Logs/chezmoi-sync.log
 ```
 
 ### Restore on New Machine
