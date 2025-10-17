@@ -38,9 +38,9 @@
       "space w": "workspace::Save",
       "space space": "editor::OpenExcerpts",
       "g d": ["workspace::SendKeystrokes", "*"],
-      "*": "vim::PushFindForward",
-      "n": "search::SelectNextMatch",
-      "shift-n": "search::SelectPreviousMatch"
+      "*": "vim::MoveToNext",
+      "n": "vim::MoveToNext",
+      "shift-n": "vim::MoveToPrevious"
     }
   },
   {
