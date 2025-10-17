@@ -33,11 +33,54 @@ chezmoi status  # See modified files
 cd $(chezmoi source-path) && git diff  # Review changes
 ```
 
+### macOS Launcher Setup
+
+Set up Zed as the default editor for chezmoi:
+
+```bash
+# Add to your shell config (~/.zshrc or ~/.bashrc)
+export EDITOR="zed --wait"
+
+# Or set chezmoi config
+chezmoi edit-config
+# Add: edit.command = "zed"
+```
+
 ### Restore on New Machine
 
 ```bash
 chezmoi init https://github.com/regedarek/dotfiles.git
 chezmoi apply
+```
+
+---
+
+## 📋 View Zed Logs
+
+### Real-time Monitoring
+
+```bash
+# Follow logs in real-time
+tail -f ~/Library/Logs/Zed/Zed.log
+
+# Filter for errors only
+tail -f ~/Library/Logs/Zed/Zed.log | grep -i error
+
+# Filter for agent activity
+tail -f ~/Library/Logs/Zed/Zed.log | grep -i agent
+```
+
+### View Recent Logs
+
+```bash
+# Last 100 lines
+tail -100 ~/Library/Logs/Zed/Zed.log
+
+# Last 100 lines with errors
+tail -100 ~/Library/Logs/Zed/Zed.log | grep ERROR
+
+# Open in editor
+zed ~/Library/Logs/Zed/Zed.log
 ```
 
 ---
@@ -69,22 +112,33 @@ Location: `~/.config/zed/settings.json`
 }
 ```
 
-### Troubleshooting
+### Reset Agent Threads
 
-If agent stops responding:
+If agent stops responding or behaves incorrectly:
 
 ```bash
-# Delete corrupted conversation history
+# 1. Quit Zed completely
+# Press Cmd+Q or: killall Zed
+
+# 2. Delete corrupted conversation history
 rm ~/Library/Application\ Support/Zed/threads/threads.db
 
-# Restart Zed (Cmd+Q, then reopen)
+# 3. Restart Zed
+open -a Zed
 ```
 
-### Check Logs
+### Quick Reset Script
+
+Save as `~/bin/reset-zed-agent`:
 
 ```bash
-tail -100 ~/Library/Logs/Zed/Zed.log | grep -i error
+#!/bin/bash
+killall Zed 2>/dev/null
+rm ~/Library/Application\ Support/Zed/threads/threads.db
+echo "✅ Agent threads reset. Restart Zed."
 ```
+
+Make executable: `chmod +x ~/bin/reset-zed-agent`
 
 ---
 
