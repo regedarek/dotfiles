@@ -4,7 +4,9 @@
       "ctrl-a": "workspace::ToggleRightDock",
       "ctrl-p": "project_panel::ToggleFocus",
       "ctrl-g": "git_panel::ToggleFocus",
-      "ctrl-t": "terminal_panel::ToggleFocus"
+      "ctrl-t": "terminal_panel::ToggleFocus",
+      "ctrl-l": "agent::ToggleFocus",
+      "ctrl-h": "project_panel::ToggleFocus"
     }
   },
   {
@@ -22,12 +24,16 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-t": "workspace::ToggleBottomDock"
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "space r l": "task::Rerun"
     }
   },
   {
     "context": "Editor && vim_mode == insert && !menu",
-    "bindings": {}
+    "bindings": {
+      "ctrl-l": "agent::ToggleFocus",
+      "ctrl-h": "project_panel::ToggleFocus"
+    }
   },
   {
     "context": "Editor && vim_mode == normal",
@@ -37,10 +43,14 @@
       "space t": "file_finder::Toggle",
       "space w": "workspace::Save",
       "space space": "editor::OpenExcerpts",
+      "space r l": "task::Rerun",
+      "space r t": ["task::Spawn", {"task_name": "RSpec: Run current file"}],
       "g d": ["workspace::SendKeystrokes", "*"],
       "*": "vim::MoveToNext",
       "n": "vim::MoveToNext",
-      "shift-n": "vim::MoveToPrevious"
+      "shift-n": "vim::MoveToPrevious",
+      "ctrl-l": "agent::ToggleFocus",
+      "ctrl-h": "project_panel::ToggleFocus"
     }
   },
   {
