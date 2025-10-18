@@ -42,7 +42,7 @@
   },
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp", "!solargraph"]
+      "language_servers": []
     }
   },
   "ui_font_size": 16,
