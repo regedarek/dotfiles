@@ -33,6 +33,18 @@
     "always_allow_tool_actions": true,
     "model_parameters": []
   },
+  "lsp": {
+    "solargraph": {
+      "initialization_options": {
+        "diagnostics": false
+      }
+    }
+  },
+  "languages": {
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "!solargraph"]
+    }
+  },
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "buffer_font_family": ".ZedMono",
