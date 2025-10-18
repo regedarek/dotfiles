@@ -2,8 +2,8 @@
   {
     "bindings": {
       "ctrl-a": "workspace::ToggleRightDock",
-      "ctrl-p": "project_panel::ToggleFocus",
-      "ctrl-g": "git_panel::ToggleFocus",
+      "ctrl-p": "workspace::ToggleLeftDock",
+      "ctrl-g": ["project_panel::ToggleFocus", "git_panel::ToggleFocus"],
       "ctrl-t": "terminal_panel::ToggleFocus",
       "ctrl-l": "agent::ToggleFocus",
       "ctrl-h": "project_panel::ToggleFocus"
@@ -12,13 +12,15 @@
   {
     "context": "ProjectPanel",
     "bindings": {
-      "ctrl-p": "workspace::ToggleLeftDock"
+      "ctrl-p": "workspace::ToggleLeftDock",
+      "ctrl-g": "git_panel::ToggleFocus"
     }
   },
   {
     "context": "GitPanel",
     "bindings": {
-      "ctrl-g": "git_panel::ToggleFocus"
+      "ctrl-p": "workspace::ToggleLeftDock",
+      "ctrl-g": "project_panel::ToggleFocus"
     }
   },
   {
