@@ -1,4 +1,12 @@
 {
+  "edit_predictions": {
+    "disabled_globs": [     "**/.env*",
+     "**/*.pem",
+     "**/*.key",
+     "**/*.cert",
+     "**/*.crt",
+     "**/secrets.yml"]
+  },
   "collaboration_panel": {
     "button": false
   },
