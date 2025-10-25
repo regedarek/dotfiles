@@ -63,5 +63,6 @@
   },
   "vim_mode": true,
   "relative_line_numbers": false,
-  "cursor_blink": false
+  "cursor_blink": false,
+  "remove_trailing_whitespace_on_save": false
 }
